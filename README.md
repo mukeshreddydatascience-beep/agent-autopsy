@@ -1,7 +1,7 @@
 # Agent Autopsy
 
 Postmortems for agent runs. When your agent fails in production, this tells
-you *why* — not just that it did.
+you *why* not just that it did.
 
 ## The problem
 
