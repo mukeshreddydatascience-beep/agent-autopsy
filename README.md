@@ -81,6 +81,26 @@ python -m agent_autopsy.cli fleet ./traces/ --out fleet_report.md
 python -m agent_autopsy.cli trace my_trace.json --fail-on-failure
 ```
 
+## Bring your own traces
+
+The core reads plain JSON so it never locks you to a vendor. If you already
+trace with LangSmith or Langfuse, convert the export first:
+
+```bash
+# LangSmith run export (API response or downloaded JSON)
+python -m agent_autopsy.cli import --from langsmith \
+    --in langsmith_run.json --out trace.json
+
+# Langfuse trace export (with observations)
+python -m agent_autopsy.cli import --from langfuse \
+    --in langfuse_trace.json --out trace.json
+
+python -m agent_autopsy.cli trace trace.json
+```
+
+Status is auto-detected (any errored span means failed); override with
+`--status ok` when you know better.
+
 ## Trace format
 
 Plain JSON. Bring your own traces from LangSmith, Langfuse, or your own

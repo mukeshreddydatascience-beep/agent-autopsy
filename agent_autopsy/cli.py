@@ -11,6 +11,7 @@ from .trace import load_trace
 from .analyzer import autopsy_trace
 from .fleet import autopsy_fleet
 from .report import render_trace_report, render_fleet_report
+from .importers import IMPORTERS
 
 
 def cmd_trace(args) -> int:
@@ -62,10 +63,42 @@ def main(argv=None) -> int:
     f.add_argument("dir", help="Directory of trace JSON files")
     f.add_argument("--out", help="Write markdown report to this file")
 
+    im = sub.add_parser("import", help="Convert a LangSmith/Langfuse export to a trace")
+    im.add_argument("--from", dest="source", choices=["langsmith", "langfuse"],
+                    required=True)
+    im.add_argument("--in", dest="in_file", required=True, help="Export JSON file")
+    im.add_argument("--out", dest="out_file", required=True, help="Trace JSON file")
+    im.add_argument("--status", choices=["ok", "failed"],
+                    help="Override auto-detected status")
+
     args = p.parse_args(argv)
     if args.cmd == "trace":
         return cmd_trace(args)
-    return cmd_fleet(args)
+    if args.cmd == "fleet":
+        return cmd_fleet(args)
+    return cmd_import(args)
+
+
+def cmd_import(args) -> int:
+    with open(args.in_file) as f:
+        raw = json.load(f)
+    trace = IMPORTERS[args.source](raw, status=args.status)
+    payload = {
+        "trace_id": trace.trace_id, "agent": trace.agent, "version": trace.version,
+        "status": trace.status, "tools": trace.tools,
+        "spans": [
+            {"span_id": s.span_id, "parent_id": s.parent_id, "name": s.name,
+             "kind": s.kind, "start_ms": s.start_ms, "end_ms": s.end_ms,
+             "input": s.input, "output": s.output, "error": s.error,
+             "tokens_in": s.tokens_in, "tokens_out": s.tokens_out}
+            for s in trace.spans
+        ],
+    }
+    with open(args.out_file, "w") as f:
+        json.dump(payload, f, indent=2, default=str)
+    print(f"Converted {args.source} export -> {args.out_file} "
+          f"({len(trace.spans)} spans, status={trace.status})")
+    return 0
 
 
 if __name__ == "__main__":
