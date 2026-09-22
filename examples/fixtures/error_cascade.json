@@ -1,0 +1,95 @@
+{
+  "trace_id": "t-cascade-1",
+  "agent": "support-bot",
+  "version": "v3",
+  "status": "failed",
+  "tools": [
+    "search_docs",
+    "get_order",
+    "issue_refund"
+  ],
+  "spans": [
+    {
+      "span_id": "agent_run",
+      "parent_id": null,
+      "name": "support-bot",
+      "kind": "agent",
+      "start_ms": 0,
+      "end_ms": 3100.0,
+      "input": "Where is my order #48291?",
+      "output": null,
+      "error": null,
+      "tokens_in": 0,
+      "tokens_out": 0
+    },
+    {
+      "span_id": "l1",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 0.0,
+      "end_ms": 900.0,
+      "input": "[conversation history]",
+      "output": "get order",
+      "error": null,
+      "tokens_in": 1500,
+      "tokens_out": 120
+    },
+    {
+      "span_id": "t1",
+      "parent_id": "agent_run",
+      "name": "get_order",
+      "kind": "tool",
+      "start_ms": 900.0,
+      "end_ms": 1200.0,
+      "input": {
+        "order_id": "XYZ"
+      },
+      "output": "ok",
+      "error": "OrderNotFound: no order 'XYZ'",
+      "tokens_in": 120,
+      "tokens_out": 40
+    },
+    {
+      "span_id": "l2",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 1200.0,
+      "end_ms": 2000.0,
+      "input": "[conversation history]",
+      "output": "retry get_order",
+      "error": null,
+      "tokens_in": 1900,
+      "tokens_out": 110
+    },
+    {
+      "span_id": "t2",
+      "parent_id": "agent_run",
+      "name": "get_order",
+      "kind": "tool",
+      "start_ms": 2000.0,
+      "end_ms": 2300.0,
+      "input": {
+        "order_id": "XYZ"
+      },
+      "output": "ok",
+      "error": "OrderNotFound: no order 'XYZ'",
+      "tokens_in": 120,
+      "tokens_out": 40
+    },
+    {
+      "span_id": "l3",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 2300.0,
+      "end_ms": 3100.0,
+      "input": "[conversation history]",
+      "output": "ask user to verify id",
+      "error": null,
+      "tokens_in": 2200,
+      "tokens_out": 130
+    }
+  ]
+}

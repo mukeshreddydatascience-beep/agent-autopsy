@@ -1,0 +1,67 @@
+{
+  "trace_id": "t-healthy-1",
+  "agent": "support-bot",
+  "version": "v3",
+  "status": "ok",
+  "tools": [
+    "search_docs",
+    "get_order",
+    "issue_refund"
+  ],
+  "spans": [
+    {
+      "span_id": "agent_run",
+      "parent_id": null,
+      "name": "support-bot",
+      "kind": "agent",
+      "start_ms": 0,
+      "end_ms": 2100.0,
+      "input": "Where is my order #48291?",
+      "output": "done",
+      "error": null,
+      "tokens_in": 0,
+      "tokens_out": 0
+    },
+    {
+      "span_id": "l1",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 0.0,
+      "end_ms": 900.0,
+      "input": "[conversation history]",
+      "output": "need order status -> get_order",
+      "error": null,
+      "tokens_in": 1500,
+      "tokens_out": 120
+    },
+    {
+      "span_id": "t1",
+      "parent_id": "agent_run",
+      "name": "get_order",
+      "kind": "tool",
+      "start_ms": 900.0,
+      "end_ms": 1300.0,
+      "input": {
+        "order_id": "48291"
+      },
+      "output": "{'status': 'shipped', 'eta': 'Sep 25'}",
+      "error": null,
+      "tokens_in": 120,
+      "tokens_out": 80
+    },
+    {
+      "span_id": "l2",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 1300.0,
+      "end_ms": 2100.0,
+      "input": "[conversation history]",
+      "output": "final answer",
+      "error": null,
+      "tokens_in": 1900,
+      "tokens_out": 150
+    }
+  ]
+}

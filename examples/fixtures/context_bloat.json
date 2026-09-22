@@ -1,0 +1,179 @@
+{
+  "trace_id": "t-bloat-1",
+  "agent": "support-bot",
+  "version": "v3",
+  "status": "failed",
+  "tools": [
+    "search_docs",
+    "get_order",
+    "issue_refund"
+  ],
+  "spans": [
+    {
+      "span_id": "agent_run",
+      "parent_id": null,
+      "name": "support-bot",
+      "kind": "agent",
+      "start_ms": 0,
+      "end_ms": 7400.0,
+      "input": "Where is my order #48291?",
+      "output": null,
+      "error": null,
+      "tokens_in": 0,
+      "tokens_out": 0
+    },
+    {
+      "span_id": "t0",
+      "parent_id": "agent_run",
+      "name": "search_docs",
+      "kind": "tool",
+      "start_ms": 0.0,
+      "end_ms": 400.0,
+      "input": {
+        "query": "q0"
+      },
+      "output": "long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk ",
+      "error": null,
+      "tokens_in": 120,
+      "tokens_out": 80
+    },
+    {
+      "span_id": "l0",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 400.0,
+      "end_ms": 1300.0,
+      "input": "[conversation history]",
+      "output": "keep reading",
+      "error": null,
+      "tokens_in": 2000,
+      "tokens_out": 150
+    },
+    {
+      "span_id": "t1",
+      "parent_id": "agent_run",
+      "name": "search_docs",
+      "kind": "tool",
+      "start_ms": 1300.0,
+      "end_ms": 1700.0,
+      "input": {
+        "query": "q1"
+      },
+      "output": "long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk ",
+      "error": null,
+      "tokens_in": 120,
+      "tokens_out": 80
+    },
+    {
+      "span_id": "l1",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 1700.0,
+      "end_ms": 2600.0,
+      "input": "[conversation history]",
+      "output": "keep reading",
+      "error": null,
+      "tokens_in": 4400,
+      "tokens_out": 150
+    },
+    {
+      "span_id": "t2",
+      "parent_id": "agent_run",
+      "name": "search_docs",
+      "kind": "tool",
+      "start_ms": 2600.0,
+      "end_ms": 3000.0,
+      "input": {
+        "query": "q2"
+      },
+      "output": "long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk ",
+      "error": null,
+      "tokens_in": 120,
+      "tokens_out": 80
+    },
+    {
+      "span_id": "l2",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 3000.0,
+      "end_ms": 3900.0,
+      "input": "[conversation history]",
+      "output": "keep reading",
+      "error": null,
+      "tokens_in": 9680,
+      "tokens_out": 150
+    },
+    {
+      "span_id": "t3",
+      "parent_id": "agent_run",
+      "name": "search_docs",
+      "kind": "tool",
+      "start_ms": 3900.0,
+      "end_ms": 4300.0,
+      "input": {
+        "query": "q3"
+      },
+      "output": "long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk ",
+      "error": null,
+      "tokens_in": 120,
+      "tokens_out": 80
+    },
+    {
+      "span_id": "l3",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 4300.0,
+      "end_ms": 5200.0,
+      "input": "[conversation history]",
+      "output": "keep reading",
+      "error": null,
+      "tokens_in": 21296,
+      "tokens_out": 150
+    },
+    {
+      "span_id": "t4",
+      "parent_id": "agent_run",
+      "name": "search_docs",
+      "kind": "tool",
+      "start_ms": 5200.0,
+      "end_ms": 5600.0,
+      "input": {
+        "query": "q4"
+      },
+      "output": "long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk long doc chunk ",
+      "error": null,
+      "tokens_in": 120,
+      "tokens_out": 80
+    },
+    {
+      "span_id": "l4",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 5600.0,
+      "end_ms": 6500.0,
+      "input": "[conversation history]",
+      "output": "keep reading",
+      "error": null,
+      "tokens_in": 46851,
+      "tokens_out": 150
+    },
+    {
+      "span_id": "l5",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 6500.0,
+      "end_ms": 7400.0,
+      "input": "[huge history]",
+      "output": null,
+      "error": "context_length_exceeded: 131072 limit",
+      "tokens_in": 140000,
+      "tokens_out": 0
+    }
+  ]
+}

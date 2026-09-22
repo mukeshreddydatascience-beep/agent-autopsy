@@ -1,0 +1,67 @@
+{
+  "trace_id": "t-halluc-1",
+  "agent": "support-bot",
+  "version": "v3",
+  "status": "failed",
+  "tools": [
+    "search_docs",
+    "get_order",
+    "issue_refund"
+  ],
+  "spans": [
+    {
+      "span_id": "agent_run",
+      "parent_id": null,
+      "name": "support-bot",
+      "kind": "agent",
+      "start_ms": 0,
+      "end_ms": 1900.0,
+      "input": "Where is my order #48291?",
+      "output": null,
+      "error": null,
+      "tokens_in": 0,
+      "tokens_out": 0
+    },
+    {
+      "span_id": "l1",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 0.0,
+      "end_ms": 900.0,
+      "input": "[conversation history]",
+      "output": "need admin access",
+      "error": null,
+      "tokens_in": 1500,
+      "tokens_out": 120
+    },
+    {
+      "span_id": "t1",
+      "parent_id": "agent_run",
+      "name": "delete_user",
+      "kind": "tool",
+      "start_ms": 900.0,
+      "end_ms": 1100.0,
+      "input": {
+        "user": "u_991"
+      },
+      "output": "ok",
+      "error": "UnknownTool: delete_user not registered",
+      "tokens_in": 100,
+      "tokens_out": 30
+    },
+    {
+      "span_id": "l2",
+      "parent_id": "agent_run",
+      "name": "planner",
+      "kind": "llm",
+      "start_ms": 1100.0,
+      "end_ms": 1900.0,
+      "input": "[conversation history]",
+      "output": "confused",
+      "error": null,
+      "tokens_in": 1800,
+      "tokens_out": 100
+    }
+  ]
+}
